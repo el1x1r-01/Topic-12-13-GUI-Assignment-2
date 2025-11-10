@@ -30,21 +30,22 @@
         {
             this.txtHeightInput = new System.Windows.Forms.TextBox();
             this.grpHeightStartingUnit = new System.Windows.Forms.GroupBox();
-            this.radFromHH = new System.Windows.Forms.RadioButton();
-            this.radFromFeet = new System.Windows.Forms.RadioButton();
+            this.radfromMeters = new System.Windows.Forms.RadioButton();
             this.radFromCM = new System.Windows.Forms.RadioButton();
             this.radFromInches = new System.Windows.Forms.RadioButton();
+            this.radFromFeet = new System.Windows.Forms.RadioButton();
+            this.radFromHH = new System.Windows.Forms.RadioButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.grpHeightConverter = new System.Windows.Forms.GroupBox();
-            this.radfromMeters = new System.Windows.Forms.RadioButton();
+            this.lblHeightFrom = new System.Windows.Forms.Label();
+            this.lblHeightTo = new System.Windows.Forms.Label();
             this.grpHeightConvertTo = new System.Windows.Forms.GroupBox();
             this.radToMeters = new System.Windows.Forms.RadioButton();
             this.radToCM = new System.Windows.Forms.RadioButton();
             this.radToInches = new System.Windows.Forms.RadioButton();
             this.radToFeet = new System.Windows.Forms.RadioButton();
             this.radToHH = new System.Windows.Forms.RadioButton();
-            this.lblHeightTo = new System.Windows.Forms.Label();
-            this.lblHeightFrom = new System.Windows.Forms.Label();
+            this.btnCalculate = new System.Windows.Forms.Button();
             this.grpHeightStartingUnit.SuspendLayout();
             this.grpHeightConverter.SuspendLayout();
             this.grpHeightConvertTo.SuspendLayout();
@@ -54,9 +55,12 @@
             // 
             this.txtHeightInput.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHeightInput.Location = new System.Drawing.Point(23, 32);
+            this.txtHeightInput.MaxLength = 5;
             this.txtHeightInput.Name = "txtHeightInput";
-            this.txtHeightInput.Size = new System.Drawing.Size(133, 27);
+            this.txtHeightInput.Size = new System.Drawing.Size(120, 27);
             this.txtHeightInput.TabIndex = 0;
+            this.txtHeightInput.Text = "0";
+            this.txtHeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtHeightInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // grpHeightStartingUnit
@@ -74,29 +78,18 @@
             this.grpHeightStartingUnit.TabStop = false;
             this.grpHeightStartingUnit.Text = "Starting unit:";
             // 
-            // radFromHH
+            // radfromMeters
             // 
-            this.radFromHH.AutoSize = true;
-            this.radFromHH.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radFromHH.Location = new System.Drawing.Point(25, 30);
-            this.radFromHH.Name = "radFromHH";
-            this.radFromHH.Size = new System.Drawing.Size(120, 24);
-            this.radFromHH.TabIndex = 0;
-            this.radFromHH.TabStop = true;
-            this.radFromHH.Text = "Horse hands";
-            this.radFromHH.UseVisualStyleBackColor = true;
-            // 
-            // radFromFeet
-            // 
-            this.radFromFeet.AutoSize = true;
-            this.radFromFeet.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radFromFeet.Location = new System.Drawing.Point(25, 67);
-            this.radFromFeet.Name = "radFromFeet";
-            this.radFromFeet.Size = new System.Drawing.Size(62, 24);
-            this.radFromFeet.TabIndex = 1;
-            this.radFromFeet.TabStop = true;
-            this.radFromFeet.Text = "Feet";
-            this.radFromFeet.UseVisualStyleBackColor = true;
+            this.radfromMeters.AutoSize = true;
+            this.radfromMeters.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radfromMeters.Location = new System.Drawing.Point(25, 178);
+            this.radfromMeters.Name = "radfromMeters";
+            this.radfromMeters.Size = new System.Drawing.Size(80, 24);
+            this.radfromMeters.TabIndex = 4;
+            this.radfromMeters.TabStop = true;
+            this.radfromMeters.Text = "Meters";
+            this.radfromMeters.UseVisualStyleBackColor = true;
+            this.radfromMeters.CheckedChanged += new System.EventHandler(this.radfromMeters_CheckedChanged);
             // 
             // radFromCM
             // 
@@ -109,6 +102,7 @@
             this.radFromCM.TabStop = true;
             this.radFromCM.Text = "Centimeters";
             this.radFromCM.UseVisualStyleBackColor = true;
+            this.radFromCM.CheckedChanged += new System.EventHandler(this.radFromCM_CheckedChanged);
             // 
             // radFromInches
             // 
@@ -121,6 +115,33 @@
             this.radFromInches.TabStop = true;
             this.radFromInches.Text = "Inches";
             this.radFromInches.UseVisualStyleBackColor = true;
+            this.radFromInches.CheckedChanged += new System.EventHandler(this.radFromInches_CheckedChanged);
+            // 
+            // radFromFeet
+            // 
+            this.radFromFeet.AutoSize = true;
+            this.radFromFeet.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radFromFeet.Location = new System.Drawing.Point(25, 67);
+            this.radFromFeet.Name = "radFromFeet";
+            this.radFromFeet.Size = new System.Drawing.Size(62, 24);
+            this.radFromFeet.TabIndex = 1;
+            this.radFromFeet.TabStop = true;
+            this.radFromFeet.Text = "Feet";
+            this.radFromFeet.UseVisualStyleBackColor = true;
+            this.radFromFeet.CheckedChanged += new System.EventHandler(this.radFromFeet_CheckedChanged);
+            // 
+            // radFromHH
+            // 
+            this.radFromHH.AutoSize = true;
+            this.radFromHH.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radFromHH.Location = new System.Drawing.Point(25, 30);
+            this.radFromHH.Name = "radFromHH";
+            this.radFromHH.Size = new System.Drawing.Size(120, 24);
+            this.radFromHH.TabIndex = 0;
+            this.radFromHH.TabStop = true;
+            this.radFromHH.Text = "Horse hands";
+            this.radFromHH.UseVisualStyleBackColor = true;
+            this.radFromHH.CheckedChanged += new System.EventHandler(this.radFromHH_CheckedChanged);
             // 
             // lblTitle
             // 
@@ -128,36 +149,46 @@
             this.lblTitle.Font = new System.Drawing.Font("Harlow Solid Italic", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(489, 43);
+            this.lblTitle.Size = new System.Drawing.Size(476, 42);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Unit conversion tool for equestrians";
             // 
             // grpHeightConverter
             // 
+            this.grpHeightConverter.Controls.Add(this.btnCalculate);
             this.grpHeightConverter.Controls.Add(this.lblHeightFrom);
             this.grpHeightConverter.Controls.Add(this.lblHeightTo);
             this.grpHeightConverter.Controls.Add(this.grpHeightConvertTo);
             this.grpHeightConverter.Controls.Add(this.txtHeightInput);
             this.grpHeightConverter.Controls.Add(this.grpHeightStartingUnit);
             this.grpHeightConverter.Font = new System.Drawing.Font("Harlow Solid Italic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpHeightConverter.Location = new System.Drawing.Point(82, 122);
+            this.grpHeightConverter.Location = new System.Drawing.Point(19, 85);
             this.grpHeightConverter.Name = "grpHeightConverter";
-            this.grpHeightConverter.Size = new System.Drawing.Size(419, 316);
+            this.grpHeightConverter.Size = new System.Drawing.Size(419, 352);
             this.grpHeightConverter.TabIndex = 3;
             this.grpHeightConverter.TabStop = false;
-            this.grpHeightConverter.Text = "Height";
+            this.grpHeightConverter.Text = "Horse height";
             // 
-            // radfromMeters
+            // lblHeightFrom
             // 
-            this.radfromMeters.AutoSize = true;
-            this.radfromMeters.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radfromMeters.Location = new System.Drawing.Point(25, 178);
-            this.radfromMeters.Name = "radfromMeters";
-            this.radfromMeters.Size = new System.Drawing.Size(80, 24);
-            this.radfromMeters.TabIndex = 4;
-            this.radfromMeters.TabStop = true;
-            this.radfromMeters.Text = "Meters";
-            this.radfromMeters.UseVisualStyleBackColor = true;
+            this.lblHeightFrom.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeightFrom.Location = new System.Drawing.Point(149, 34);
+            this.lblHeightFrom.Name = "lblHeightFrom";
+            this.lblHeightFrom.Size = new System.Drawing.Size(52, 23);
+            this.lblHeightFrom.TabIndex = 7;
+            this.lblHeightFrom.Text = "unit";
+            this.lblHeightFrom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHeightFrom.Click += new System.EventHandler(this.lblHeightFrom_Click);
+            // 
+            // lblHeightTo
+            // 
+            this.lblHeightTo.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeightTo.Location = new System.Drawing.Point(224, 32);
+            this.lblHeightTo.Name = "lblHeightTo";
+            this.lblHeightTo.Size = new System.Drawing.Size(170, 23);
+            this.lblHeightTo.TabIndex = 6;
+            this.lblHeightTo.Text = "= ";
+            this.lblHeightTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // grpHeightConvertTo
             // 
@@ -221,6 +252,7 @@
             this.radToFeet.TabStop = true;
             this.radToFeet.Text = "Feet";
             this.radToFeet.UseVisualStyleBackColor = true;
+            this.radToFeet.CheckedChanged += new System.EventHandler(this.radToFeet_CheckedChanged);
             // 
             // radToHH
             // 
@@ -233,37 +265,29 @@
             this.radToHH.TabStop = true;
             this.radToHH.Text = "Horse hands";
             this.radToHH.UseVisualStyleBackColor = true;
+            this.radToHH.CheckedChanged += new System.EventHandler(this.radToHH_CheckedChanged);
             // 
-            // lblHeightTo
+            // btnCalculate
             // 
-            this.lblHeightTo.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeightTo.Location = new System.Drawing.Point(224, 32);
-            this.lblHeightTo.Name = "lblHeightTo";
-            this.lblHeightTo.Size = new System.Drawing.Size(170, 23);
-            this.lblHeightTo.TabIndex = 6;
-            this.lblHeightTo.Text = "= ___ unit";
-            this.lblHeightTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblHeightFrom
-            // 
-            this.lblHeightFrom.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeightFrom.Location = new System.Drawing.Point(162, 34);
-            this.lblHeightFrom.Name = "lblHeightFrom";
-            this.lblHeightFrom.Size = new System.Drawing.Size(39, 23);
-            this.lblHeightFrom.TabIndex = 7;
-            this.lblHeightFrom.Text = "unit";
-            this.lblHeightFrom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCalculate.Location = new System.Drawing.Point(23, 301);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(371, 38);
+            this.btnCalculate.TabIndex = 4;
+            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // FormUnitConverstion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(954, 553);
+            this.ClientSize = new System.Drawing.Size(954, 479);
             this.Controls.Add(this.grpHeightConverter);
             this.Controls.Add(this.lblTitle);
             this.Name = "FormUnitConverstion";
             this.Text = "Unit Conversion Tool";
+            this.Load += new System.EventHandler(this.FormUnitConverstion_Load);
             this.grpHeightStartingUnit.ResumeLayout(false);
             this.grpHeightStartingUnit.PerformLayout();
             this.grpHeightConverter.ResumeLayout(false);
@@ -294,6 +318,7 @@
         private System.Windows.Forms.RadioButton radToInches;
         private System.Windows.Forms.RadioButton radToFeet;
         private System.Windows.Forms.RadioButton radToHH;
+        private System.Windows.Forms.Button btnCalculate;
     }
 }
 
