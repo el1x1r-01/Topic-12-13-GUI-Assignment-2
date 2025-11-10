@@ -59,6 +59,7 @@ namespace Topic_12_13_GUI_Assignment_2
         {
             radFromHH.Checked = true;
             radToHH.Checked = true;
+            this.BackgroundImage = Properties.Resources.Barn;
         }
 
         private void radToFeet_CheckedChanged(object sender, EventArgs e)
@@ -203,6 +204,11 @@ namespace Topic_12_13_GUI_Assignment_2
         }
 
         private void lblHeightFrom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

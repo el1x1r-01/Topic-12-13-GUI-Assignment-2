@@ -63,9 +63,19 @@ namespace Topic_12_13_GUI_Assignment_2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Frame {
+        internal static System.Drawing.Bitmap Barn {
             get {
-                object obj = ResourceManager.GetObject("Frame", resourceCulture);
+                object obj = ResourceManager.GetObject("Barn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Odin {
+            get {
+                object obj = ResourceManager.GetObject("Odin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUnitConverstion));
             this.txtHeightInput = new System.Windows.Forms.TextBox();
             this.grpHeightStartingUnit = new System.Windows.Forms.GroupBox();
             this.radfromMeters = new System.Windows.Forms.RadioButton();
@@ -37,6 +38,7 @@
             this.radFromHH = new System.Windows.Forms.RadioButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.grpHeightConverter = new System.Windows.Forms.GroupBox();
+            this.btnCalculate = new System.Windows.Forms.Button();
             this.lblHeightFrom = new System.Windows.Forms.Label();
             this.lblHeightTo = new System.Windows.Forms.Label();
             this.grpHeightConvertTo = new System.Windows.Forms.GroupBox();
@@ -45,10 +47,12 @@
             this.radToInches = new System.Windows.Forms.RadioButton();
             this.radToFeet = new System.Windows.Forms.RadioButton();
             this.radToHH = new System.Windows.Forms.RadioButton();
-            this.btnCalculate = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.imgOdin = new System.Windows.Forms.PictureBox();
             this.grpHeightStartingUnit.SuspendLayout();
             this.grpHeightConverter.SuspendLayout();
             this.grpHeightConvertTo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOdin)).BeginInit();
             this.SuspendLayout();
             // 
             // txtHeightInput
@@ -146,6 +150,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Harlow Solid Italic", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
@@ -155,6 +160,7 @@
             // 
             // grpHeightConverter
             // 
+            this.grpHeightConverter.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grpHeightConverter.Controls.Add(this.btnCalculate);
             this.grpHeightConverter.Controls.Add(this.lblHeightFrom);
             this.grpHeightConverter.Controls.Add(this.lblHeightTo);
@@ -162,12 +168,22 @@
             this.grpHeightConverter.Controls.Add(this.txtHeightInput);
             this.grpHeightConverter.Controls.Add(this.grpHeightStartingUnit);
             this.grpHeightConverter.Font = new System.Drawing.Font("Harlow Solid Italic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpHeightConverter.Location = new System.Drawing.Point(19, 85);
+            this.grpHeightConverter.Location = new System.Drawing.Point(19, 67);
             this.grpHeightConverter.Name = "grpHeightConverter";
             this.grpHeightConverter.Size = new System.Drawing.Size(419, 352);
             this.grpHeightConverter.TabIndex = 3;
             this.grpHeightConverter.TabStop = false;
             this.grpHeightConverter.Text = "Horse height";
+            // 
+            // btnCalculate
+            // 
+            this.btnCalculate.Location = new System.Drawing.Point(23, 301);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(371, 38);
+            this.btnCalculate.TabIndex = 4;
+            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // lblHeightFrom
             // 
@@ -267,22 +283,37 @@
             this.radToHH.UseVisualStyleBackColor = true;
             this.radToHH.CheckedChanged += new System.EventHandler(this.radToHH_CheckedChanged);
             // 
-            // btnCalculate
+            // label1
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(23, 301);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(371, 38);
-            this.btnCalculate.TabIndex = 4;
-            this.btnCalculate.Text = "Calculate";
-            this.btnCalculate.UseVisualStyleBackColor = true;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(460, 396);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 23);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Odin, 17hh";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // imgOdin
+            // 
+            this.imgOdin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.imgOdin.Image = ((System.Drawing.Image)(resources.GetObject("imgOdin.Image")));
+            this.imgOdin.Location = new System.Drawing.Point(463, 79);
+            this.imgOdin.Name = "imgOdin";
+            this.imgOdin.Size = new System.Drawing.Size(444, 306);
+            this.imgOdin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgOdin.TabIndex = 4;
+            this.imgOdin.TabStop = false;
             // 
             // FormUnitConverstion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(954, 479);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(935, 438);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.imgOdin);
             this.Controls.Add(this.grpHeightConverter);
             this.Controls.Add(this.lblTitle);
             this.Name = "FormUnitConverstion";
@@ -294,6 +325,7 @@
             this.grpHeightConverter.PerformLayout();
             this.grpHeightConvertTo.ResumeLayout(false);
             this.grpHeightConvertTo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOdin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,6 +351,8 @@
         private System.Windows.Forms.RadioButton radToFeet;
         private System.Windows.Forms.RadioButton radToHH;
         private System.Windows.Forms.Button btnCalculate;
+        private System.Windows.Forms.PictureBox imgOdin;
+        private System.Windows.Forms.Label label1;
     }
 }
 
